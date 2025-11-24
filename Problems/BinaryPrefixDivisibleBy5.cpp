@@ -1,9 +1,9 @@
 /*
- * @lc app=leetcode id=1838491026 lang=cpp
+ * @lc app=leetcode id=1838497507 lang=cpp
  *
  * BinaryPrefixDivisibleBy5
  * 
- * Difficulty: Level
+ * Difficulty: Medium
  * Category: undefined
  * Runtime: N/A
  * Memory: N/A
