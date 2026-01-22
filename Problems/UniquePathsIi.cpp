@@ -1,9 +1,9 @@
 /*
- * @lc app=leetcode id=1893267292 lang=cpp
+ * @lc app=leetcode id=1893346782 lang=cpp
  *
  * UniquePathsIi
  * 
- * Difficulty: Level
+ * Difficulty: Medium
  * Category: undefined
  * Runtime: N/A
  * Memory: N/A
