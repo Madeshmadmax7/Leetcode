@@ -1,5 +1,5 @@
 /*
- * @lc app=leetcode id=1834243441 lang=cpp
+ * @lc app=leetcode id=1920061619 lang=cpp
  *
  * AddBinary
  * 
@@ -10,23 +10,24 @@
  */
 
 class Solution {
- public:
-  string addBinary(string a, string b) {
-    string ans;
-    int carry = 0;
-    int i = a.length() - 1;
-    int j = b.length() - 1;
-
-    while (i >= 0 || j >= 0 || carry) {
-      if (i >= 0)
-        carry += a[i--] - '0';
-      if (j >= 0)
-        carry += b[j--] - '0';
-      ans += carry % 2 + '0';
-      carry /= 2;
+public:
+    string addBinary(string a, string b) {
+        string res = "";
+        int carry = 0;
+        reverse(a.begin(), a.end());
+        reverse(b.begin(), b.end());
+        for (int i = 0; i < max(a.length(), b.length()); i++) {
+            int digitA = i < a.length() ? a[i] - '0' : 0;
+            int digitB = i < b.length() ? b[i] - '0' : 0;
+            int total = digitA + digitB + carry;
+            char c = (total % 2) + '0';
+            res += c;
+            carry = total / 2;
+        }
+        if (carry) {
+            res += '1';
+        }
+        reverse(res.begin(), res.end());
+        return res;        
     }
-
-    reverse(begin(ans), end(ans));
-    return ans;
-  }
 };
