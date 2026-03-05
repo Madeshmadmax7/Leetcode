@@ -1,9 +1,9 @@
 /*
- * @lc app=leetcode id=1937687655 lang=cpp
+ * @lc app=leetcode id=1938884543 lang=cpp
  *
  * SpecialPositionsInABinaryMatrix
  * 
- * Difficulty: Medium
+ * Difficulty: Level
  * Category: undefined
  * Runtime: N/A
  * Memory: N/A
@@ -13,31 +13,29 @@ class Solution {
 public:
     int numSpecial(vector<vector<int>>& mat) {
         int rows=mat.size();
-        int count=0;
-        
+        int cols=mat[0].size();
+        int ct=0;
         for(int i=0;i<rows;i++){
-            int rowOnes=0;
-            int colIndex=-1;
-
-            for(int j=0;j<mat[i].size();j++){
+            int r1=0;
+            int col=-1;
+            for(int j=0;j<cols;j++){
                 if(mat[i][j]==1){
-                    rowOnes++;
-                    colIndex=j;
+                    r1++;
+                    col=j;
                 }
             }
-
-            if(rowOnes==1){
-                int colOnes=0;
-                for(int k=0;k< rows;k++){
-                    if(mat[k][colIndex]==1){
-                        colOnes++;
+            if(r1==1){
+                int c1=0;
+                for(int k=0;k<rows;k++){
+                    if(mat[k][col]==1){
+                        c1++;
                     }
                 }
-                if(colOnes==1){
-                    count++;
+                if(c1==1){
+                    ct++;
                 }
             }
         }
-        return count;
+        return ct;
     }
 };
