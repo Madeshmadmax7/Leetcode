@@ -1,9 +1,9 @@
 /*
- * @lc app=leetcode id=1935736340 lang=cpp
+ * @lc app=leetcode id=1971757715 lang=cpp
  *
  * MinStack
  * 
- * Difficulty: Level
+ * Difficulty: Medium
  * Category: undefined
  * Runtime: N/A
  * Memory: N/A
@@ -11,33 +11,26 @@
 
 class MinStack {
 public:
-    int stk[1000000];
-    int f,r;
+    stack<pair<int,int>>stk;
     MinStack() {
-        f=-1;
-        r=-1;
+    
     }
     
     void push(int val) {
-        if(f==-1) f=0;
-        stk[++r]=val;
+        int mini=stk.empty()?val:min(val,stk.top().second);
+        stk.push({val,mini});
     }
     
     void pop() {
-        if(r!=-1){
-            r--;
-        }
+        stk.pop();
     }
     
     int top() {
-        return stk[r];
+        return stk.top().first;
     }
     
     int getMin() {
-        int mini=INT_MAX;
-        for(int i=f;i<=r;i++){
-            mini=min(mini,stk[i]);
-        }
-        return mini;
+        int res=stk.top().second;
+        return res;
     }
 };
