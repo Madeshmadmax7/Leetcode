@@ -1,5 +1,5 @@
 /*
- * @lc app=leetcode id=1951172164 lang=cpp
+ * @lc app=leetcode id=1994962341 lang=cpp
  *
  * NumberOfProvinces
  * 
@@ -11,22 +11,23 @@
 
 class Solution {
 public:
-    void dfs(int st,vector<vector<int>>&adj,vector<int>&vis,int n){
+    void dfs(vector<vector<int>>&isconnected,vector<int>&vis,int st){
         vis[st]=1;
-        for(int i=0;i<n;i++){
-            if(adj[st][i]==1&&!vis[i]){
-                dfs(i,adj,vis,n);
+        for(int i=0;i<isconnected.size();i++){
+            if(isconnected[st][i]==1&&vis[i]!=1){
+                vis[i]=1;
+                dfs(isconnected,vis,i);
             }
         }
     }
-    int findCircleNum(vector<vector<int>>& adj) {
-        int n=adj.size();
-        vector<int>vis(n,0);
+    int findCircleNum(vector<vector<int>>& isconnected) {
+        int n=isconnected.size();
         int ct=0;
+        vector<int>vis(n,0);
         for(int i=0;i<n;i++){
             if(!vis[i]){
+                dfs(isconnected,vis,i);
                 ct++;
-                dfs(i,adj,vis,n);
             }
         }
         return ct;
